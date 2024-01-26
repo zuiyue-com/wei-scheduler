@@ -25,7 +25,7 @@ fn parse_line(line: &str) -> (String, String) {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // wei_windows::init();
+    wei_windows::init();
 
     let instance = SingleInstance::new("wei-scheduler")?;
     if !instance.is_single() { 
