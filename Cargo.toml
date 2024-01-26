@@ -9,8 +9,8 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 wei-log = "0.2.10"
-wei-run = { path = "../wei-run" }
-wei-windows = { path = "../wei-windows" }
+wei-run = "0.3.1"
+wei-windows = "0.1.1"
 wei-single = "0.3.5"
 
 job_scheduler = "1.2.1"
