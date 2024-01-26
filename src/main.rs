@@ -32,7 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         std::process::exit(1);
     };
 
-    let path = Path::new("crontab.txt");
+    let path = Path::new("crontab.dat");
     let file = File::open(&path)?;
     let reader = io::BufReader::new(file);
 
