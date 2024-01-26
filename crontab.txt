@@ -1,3 +1,4 @@
 1/2 * * * * * wei-docker1 image_list
+d f s d a b d
 1/10 * * * * * wei-docker image_list_full
 1/10 * * * * * wei-docker image_list_full

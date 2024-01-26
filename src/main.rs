@@ -57,7 +57,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             format!("sh -c {}", command)
         };
 
-        sched.add(Job::new(cron_expr.parse()?, move || {
+        sched.add(Job::new( match cron_expr.parse() {
+            Ok(expr) => expr,
+            Err(e) => {
+                info!("Invalid cron expression: {}", e);
+                continue;
+            }
+        }, move || {
             let command: Vec<&str> = command.split_whitespace().collect();
             info!("command: {:?}", command);
             match wei_run::command(command[0], command[1..].to_vec()) {
