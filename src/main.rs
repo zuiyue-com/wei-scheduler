@@ -3,7 +3,7 @@ extern crate wei_log;
 
 use wei_single::SingleInstance;
 
-use job_scheduler::{JobScheduler, Job};
+use wei_job_scheduler::{JobScheduler, Job};
 use std::time::Duration;
 
 use std::fs::File;

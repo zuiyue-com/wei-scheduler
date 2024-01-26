@@ -13,4 +13,4 @@ wei-run = { path = "../wei-run" }
 wei-windows = { path = "../wei-windows" }
 wei-single = "0.3.5"
 
-job_scheduler = "1.2.1"
+wei-job-scheduler = "1.2.2"
