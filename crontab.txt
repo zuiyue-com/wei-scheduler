@@ -1,0 +1,2 @@
+1/2 * * * * * wei-docker image_list
+1/10 * * * * * wei-docker image_list_full
