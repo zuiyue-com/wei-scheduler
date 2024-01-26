@@ -12,6 +12,12 @@ use std::path::Path;
 
 fn parse_line(line: &str) -> (String, String) {
     let parts: Vec<&str> = line.split_whitespace().collect();
+
+    if parts.len() < 7 {
+        info!("Invalid line: {}", line);
+        return ("".to_string(), "".to_string());
+    }
+
     let parts_one = parts[0..6].join(" ");
     let parts_two = parts[6..].join(" ");
 
@@ -41,6 +47,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         let (cron_expr, command) = parse_line(&line);
 
+        if cron_expr.is_empty() || command.is_empty() {
+            continue;
+        }
+
         let command = if cfg!(target_os = "windows") {
             format!("cmd.exe /c {}", command)
         } else {
@@ -50,8 +60,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         sched.add(Job::new(cron_expr.parse()?, move || {
             let command: Vec<&str> = command.split_whitespace().collect();
             info!("command: {:?}", command);
-            let output = wei_run::command(command[0], command[1..].to_vec()).unwrap();
-            info!("output: {:?}", output);
+            match wei_run::command(command[0], command[1..].to_vec()) {
+                Ok(output) => {
+                    info!("output: {:?}", output);
+                },
+                Err(e) => {
+                    info!("error: {}", e);
+                }
+            };
         }));
     }
 
