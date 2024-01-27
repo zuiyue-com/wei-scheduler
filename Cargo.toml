@@ -14,3 +14,4 @@ wei-windows = { path = "../wei-windows" }
 wei-single = "0.3.5"
 
 wei-job-scheduler = "1.2.2"
+encoding_rs = "0.8.32"

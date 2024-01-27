@@ -66,9 +66,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }, move || {
             let command: Vec<&str> = command.split_whitespace().collect();
             info!("command: {:?}", command);
-            match wei_run::command(command[0], command[1..].to_vec()) {
+            match wei_run::command_output(command[0], command[1..].to_vec()) {
                 Ok(output) => {
-                    info!("output: {:?}", output);
+                    match std::str::from_utf8(&output.stdout) {
+                        Ok(s) => info!("stdout: {}", s),
+                        Err(_) => {
+                            let (res, _, _) = encoding_rs::UTF_16LE.decode(&output.stdout);
+                            info!("stdout: {}", res.to_string());
+                        },
+                    }
                 },
                 Err(e) => {
                     info!("error: {}", e);

@@ -1,1 +1,1 @@
-0 0 6 * * * wsl --update
+1/2 * * * * * wsl --update
