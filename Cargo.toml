@@ -11,7 +11,7 @@ license = "MIT OR Apache-2.0"
 wei-log = "0.2.10"
 wei-run = { path = "../wei-run" }
 wei-windows = { path = "../wei-windows" }
-wei-single = "0.3.5"
+wei-single = "0.3.6"
 
 wei-job-scheduler = "1.2.2"
 encoding_rs = "0.8.32"
