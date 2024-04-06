@@ -1,8 +1,6 @@
 #[macro_use]
 extern crate wei_log;
 
-use wei_single::SingleInstance;
-
 use wei_job_scheduler::{JobScheduler, Job};
 use std::time::Duration;
 
